@@ -1,7 +1,10 @@
 $(document).ready(function(){
     var backClicked = false;
+    var initializedTerminal = false;
+    var Otimer;
     $("#back-end-text").mouseenter(function () {
         $(".present").addClass("dark");
+        loadCurlText($("#writing"), 80);
         console.log("enter");
     })
     .mouseleave(function() {
@@ -32,14 +35,23 @@ $(document).ready(function(){
             } else {
                 clearInterval(Otimer);
                 content.append("<br>");
-                var pre = $("<pre></pre>");
-                pre.append(JSON.stringify(entries, null, 2));
-                content.append(pre);
-                content.append();
+                setTimeout(function () {
+                    var pre = $("<pre></pre>");
+                    pre.append(JSON.stringify(entries, null, 2));
+                    content.append(pre);
+                    content.append($(".linux-command").clone());
+                    var terminalBody = $(".terminal .body");
+                    terminalBody.scrollTop(terminalBody.prop("scrollHeight"));
+                }, 2000);
             }
         };
-        var Otimer = setInterval(show, speed);
+        if(!initializedTerminal) {
+            Otimer = setInterval(show, speed);
+        } else if(!backClicked) {
+            content.text("");
+            clearInterval(Otimer);
+            Otimer = setInterval(show, speed);
+        }
+        initializedTerminal = true;
     }
-
-    loadCurlText($("#writing"), 8);
  });

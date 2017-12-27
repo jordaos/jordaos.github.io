@@ -238,7 +238,7 @@ THE SOFTWARE.
             
             var entry = {};
 
-                if ( typeof entryObj.label != 'undefined' ) {
+                if ( typeof entryObj.tag != 'undefined' ) {
                     entry.element = document.createElementNS( svgNS, 'text' );
                     entry.element.setAttribute( 'x', 0 );
                     entry.element.setAttribute( 'y', 0 );
@@ -249,7 +249,7 @@ THE SOFTWARE.
                     entry.element.setAttribute( 'font-style', settings.fontStyle );
                     entry.element.setAttribute( 'font-stretch', settings.fontStretch );
                     entry.element.setAttribute( 'text-anchor', 'middle' );
-                    entry.element.textContent = settings.fontToUpperCase ? entryObj.label.toUpperCase() : entryObj.label;
+                    entry.element.textContent = settings.fontToUpperCase ? entryObj.tag.toUpperCase() : entryObj.tag;
                 }
 
                 entry.link = document.createElementNS( svgNS, 'a' );
