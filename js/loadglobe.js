@@ -1,28 +1,4 @@
 $( document ).ready( function() {
-    var entries = [ 
-        
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-        { label: 'Dev Blog' },
-
-    ];
-
     var settings = {
         entries: entries,
         width: 480,
