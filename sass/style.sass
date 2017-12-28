@@ -31,12 +31,19 @@ body
     .container
         width: 1200px
         margin: 0 auto
+        display: flex
 
     div[class^="col-"], div[class*=" col-"]
         float: left
 
+    .col-5
+        width: 41.666667%
+
     .col-6
         width: 50%
+    
+    .col-7
+        width: 58.3333333%
 
     .col-12
         width: 100%
@@ -55,6 +62,19 @@ body
         font-family: Arial, Helvetica, sans-serif
         display: flex
         flex-direction: column
+
+        button
+            display: none
+            background: #dcdcdc
+            border: none
+            padding: 14px
+            color: #fff
+            position: absolute
+            right: 5px
+            top: 8px
+            border-radius: 5px
+            cursor: pointer
+            outline: none
 
         .logo
             display: block
@@ -182,9 +202,6 @@ body
                     height: 80px
                     background-position: 0 18px
                     pointer-events: none
-
-            .col-6
-                height: 100%
 
             .globe
                 position: relative
@@ -329,12 +346,17 @@ body
                     margin: 20px 10px
                     float: left
 
+        .container
+            display: block
+
         .page
             .present
                 display: inline-block
                 min-height: auto
 
-                .col-6
+                .col-5,
+                .col-6,
+                .col-7
                     width: 100%
                 
                 .text-present
@@ -360,3 +382,42 @@ body
                 .globe, 
                 .terminal
                     display: none
+
+@media only screen and (max-width: 768px)
+    body
+        nav
+            flex-direction: column
+            background: transparent
+
+            button
+                display: block
+
+            .menu-items, 
+            .menu-social
+                display: flex
+                justify-content: center
+                margin: 0 auto
+                transition: all .5s ease-in-out
+                -webkit-transition: all .5s ease-in-out
+                -moz-transition: all .5s ease-in-out
+                -o-transition: all .5s ease-in-out
+                -ms-transition: all .5s ease-in-out
+                position: relative
+                left: 100%
+                width: 100%
+                background: #222
+
+                li
+                    margin: 0
+
+                    a
+                        padding: 9px 11px
+            .menu-social
+                li
+                    a
+                        padding: 17px 14px
+            
+            &.show-menu
+                .menu-items,
+                .menu-social
+                    left: 0
