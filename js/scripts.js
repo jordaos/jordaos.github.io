@@ -55,4 +55,15 @@ $(document).ready(function(){
         }
         initializedTerminal = true;
     }
+
+    $( window ).resize(function() {
+        var screenWidth = $( document ).width() + 15;
+        
+        if (screenWidth <= 992) {
+            $(".present").removeClass("dark");
+            $("nav").removeClass("dark");
+            $("#back-end-text").removeClass("clicked");
+            backClicked = false;
+        }
+    });
  });

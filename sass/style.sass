@@ -197,6 +197,7 @@ body
                 top: 50%
                 transform: translateY(-50%)
                 display: none
+                margin: 0 10px
 
                 .top
                     background: #4a4842
@@ -227,6 +228,8 @@ body
 
                     .writing
                         word-spacing: 6px
+                        word-break: break-all
+
                         &::after
                             content: 'a'
                             background: #fff
@@ -348,6 +351,7 @@ body
                     color: #000
                     transition: none
                     -webkit-animation: none
+                    pointer-events: none
 
                     &::after
                         content: ''
