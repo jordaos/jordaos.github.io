@@ -3,6 +3,8 @@ $colorLight: #fff
 $colorPrimary: #22A7F0
 $colorSecondary: #F62459
 
+$widthMenu: 65px
+
 @import url('https://fonts.googleapis.com/css?family=Arvo')
 
 @font-face
@@ -24,6 +26,7 @@ body
     padding: 0
     background: $colorLight
     font-family: 'Arvo', serif
+    margin-left: $widthMenu
 
     .container
         width: 1200px
@@ -42,6 +45,34 @@ body
         font-family: 'La Belle Aurore'
         font-size: 13px
 
+    nav
+        position: fixed
+        width: $widthMenu
+        height: 100%
+        background: #222
+        top: 0
+        left: 0
+
+        .logo
+            display: block
+            font-size: 30px
+            text-align: center
+            padding: 8px 0
+            text-decoration: none
+            color: $colorSecondary
+            background: #151515
+
+            span
+                font-size: 11px
+                display: inline-block
+        
+        &.dark
+            background: #EAEAEA
+
+            .logo
+                background: #DDD
+                color: $colorPrimary
+
     .page
         width: 100%
         height: 100%
@@ -56,7 +87,7 @@ body
 
             .text-present
                 margin: 0
-                padding: 30px 0
+                padding: 30px 10px
                 position: relative
                 top: 50%
                 transform: translateY(-50%)

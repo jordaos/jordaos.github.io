@@ -4,23 +4,24 @@ $(document).ready(function(){
     var Otimer;
     $("#back-end-text").mouseenter(function () {
         $(".present").addClass("dark");
+        $("nav").addClass("dark");
         loadCurlText($("#writing"), 80);
-        console.log("enter");
     })
     .mouseleave(function() {
-        if(!backClicked)
+        if(!backClicked) {
             $(".present").removeClass("dark");
-        console.log("leave");
+            $("nav").removeClass("dark");
+        }
     })
     .click(function() {
         backClicked = !backClicked;
         if(backClicked) {
             $(".present").addClass("dark");
+            $("nav").addClass("dark");
             $(this).addClass("clicked");
         } else {
             $(this).removeClass("clicked");
         }
-        console.log("click");
     });
 
     function loadCurlText(content, speed) {
