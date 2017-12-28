@@ -183,7 +183,7 @@ THE SOFTWARE.
 
             if ( settings.bgDraw ) {
 
-                bg.setAttribute( 'width', '100%' );
+                bg.setAttribute( 'width', svgWidth );
                 bg.setAttribute( 'height', svgHeight );
 
             }

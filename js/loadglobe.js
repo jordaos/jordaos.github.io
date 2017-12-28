@@ -1,8 +1,9 @@
 $( document ).ready( function() {
+    
     var settings = {
         entries: entries,
-        width: 480,
-        height: 480,
+        width: '600',
+        height: '600',
         radius: '65%',
         radiusMin: 75,
         bgDraw: true,

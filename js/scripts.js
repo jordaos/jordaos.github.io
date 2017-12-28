@@ -2,6 +2,7 @@ $(document).ready(function(){
     var backClicked = false;
     var initializedTerminal = false;
     var Otimer;
+
     $("#back-end-text").mouseenter(function () {
         $(".present").addClass("dark");
         $("nav").addClass("dark");
@@ -25,7 +26,7 @@ $(document).ready(function(){
     });
 
     function loadCurlText(content, speed) {
-        var write = "curl -i -H \"Accept: application/json\" -H \"Content-Type: appliction/json\" https://secret-waters-63016.herokuapp.com/pubs";
+        var write = "curl -i -H \"Accept: application/json\" -H \"Content-Type: appliction/json\" https://jordaomacedo.herokuapp.com/api/skills";
 
         var i = 0;
 
