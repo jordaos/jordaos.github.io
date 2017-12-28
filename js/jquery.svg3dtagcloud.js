@@ -178,12 +178,12 @@ THE SOFTWARE.
 
             //---
 
-            svg.setAttribute( 'width', svgWidth );
+            svg.setAttribute( 'width', '100%' );
             svg.setAttribute( 'height', svgHeight );
 
             if ( settings.bgDraw ) {
 
-                bg.setAttribute( 'width', svgWidth );
+                bg.setAttribute( 'width', '100%' );
                 bg.setAttribute( 'height', svgHeight );
 
             }

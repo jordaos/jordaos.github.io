@@ -91,6 +91,7 @@ body
 
                     span
                         display: block
+                        padding: 5px 0
 
                     &:hover
                         color: $colorPrimary
@@ -134,6 +135,12 @@ body
                         color: $colorPrimary
                         &:hover
                             color: $colorSecondary
+            .menu-social
+                li
+                    a
+                        color: $colorPrimary
+                        &:hover
+                            color: $colorSecondary
 
 
     .page
@@ -142,7 +149,6 @@ body
 
         .present
             color: #000
-            font-size: 35px
             background: #fff
             width: 100%
             min-height: 100%
@@ -150,6 +156,7 @@ body
 
             .text-present
                 margin: 0
+                font-size: 65px
                 padding: 30px 10px
                 position: relative
                 top: 50%
@@ -285,3 +292,78 @@ body
         background: #fff
     100%
         background: #fff
+
+@media only screen and (max-width: 1200px)
+    body
+        .container
+            width: 100%
+
+@media only screen and (max-width: 992px)
+    body
+        margin-left: 0
+        margin-top: 59px
+
+        nav
+            width: 100%
+            height: auto
+            z-index: 9
+
+            .logo
+                padding: 4px
+
+                span
+                    display: block
+
+            .menu-items
+                display: inline-block
+                position: relative
+                left: 50%
+                transform: translateX(-50%)
+
+                li
+                    float: left
+                    margin: 7px 10px
+            
+            .menu-social
+                display: block
+                position: absolute
+                right: 0
+                top: 0
+                width: auto
+
+                li
+                    margin: 20px 10px
+                    float: left
+
+        .page
+            .present
+                display: inline-block
+                min-height: auto
+
+                .col-6
+                    width: 100%
+                
+                .text-present
+                    text-align: center
+                
+                .text-present, 
+                .globe,
+                .terminal
+                    top: 0
+                    transform: none
+
+                .back-end-text
+                    background: transparent
+                    color: #000
+                    transition: none
+                    -webkit-animation: none
+
+                    &::after
+                        content: ''
+                        background: transparent
+
+                .globe, 
+                .terminal
+                    display: none
+
+@media only screen and (max-width: 540px)
