@@ -4,21 +4,18 @@ $(document).ready(function(){
     var Otimer;
 
     $("#back-end-text").mouseenter(function () {
-        $(".present").addClass("dark");
-        $("nav").addClass("dark");
+        $("body").addClass("dark");
         loadCurlText($("#writing"), 80);
     })
     .mouseleave(function() {
         if(!backClicked) {
-            $(".present").removeClass("dark");
-            $("nav").removeClass("dark");
+            $("body").removeClass("dark");
         }
     })
     .click(function() {
         backClicked = !backClicked;
         if(backClicked) {
-            $(".present").addClass("dark");
-            $("nav").addClass("dark");
+            $("body").addClass("dark");
             $(this).addClass("clicked");
         } else {
             $(this).removeClass("clicked");
@@ -61,8 +58,7 @@ $(document).ready(function(){
         var screenWidth = $( document ).width() + 15;
         
         if (screenWidth <= 992) {
-            $(".present").removeClass("dark");
-            $("nav").removeClass("dark");
+            $("body").removeClass("dark");
             $("#back-end-text").removeClass("clicked");
             backClicked = false;
         }

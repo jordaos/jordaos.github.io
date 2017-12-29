@@ -2,6 +2,8 @@ $colorDark: #252627
 $colorLight: #fff
 $colorPrimary: #22A7F0
 $colorSecondary: #F62459
+$colorDarkVersion: #222
+$colorLightVersion: #EAEAEA
 
 $widthMenu: 65px
 
@@ -51,12 +53,24 @@ body
     .tip
         font-family: 'La Belle Aurore'
         font-size: 13px
+    
+    .title
+        margin: 0
+        font-size: 30px
+        font-family: 'Arvo', serif
+        color: $colorLightVersion
+    
+    .text
+        margin: 15px 0
+        font-size: 17px
+        font-family: sans-serif 
+        color: $colorLightVersion
 
     nav
         position: fixed
         width: $widthMenu
         height: 100%
-        background: #222
+        background: $colorDarkVersion
         top: 0
         left: 0
         font-family: Arial, Helvetica, sans-serif
@@ -137,27 +151,6 @@ body
 
                     &:hover
                         color: $colorPrimary
-        
-        &.dark
-            background: #EAEAEA
-
-            .logo
-                background: #DDD
-                color: $colorPrimary
-            
-            .menu-items
-                li
-                    a
-                        color: $colorPrimary
-                        &:hover
-                            color: $colorSecondary
-            .menu-social
-                li
-                    a
-                        color: $colorPrimary
-                        &:hover
-                            color: $colorSecondary
-
 
     .page
         width: 100%
@@ -265,7 +258,44 @@ body
                     &::-webkit-scrollbar-thumb:window-inactive
                         background: #c9603f
 
-            &.dark
+        .about
+            background: $colorPrimary
+            padding: 20px
+            width: 100%
+            display: flex
+    
+    &.dark
+        .title
+            color: $colorDarkVersion
+        
+        .text
+            margin: 15px 0
+            font-size: 17px
+            font-family: sans-serif 
+            color: $colorDarkVersion
+        
+        nav
+            background: $colorLightVersion
+
+            .logo
+                background: #DDD
+                color: $colorPrimary
+            
+            .menu-items
+                li
+                    a
+                        color: $colorPrimary
+                        &:hover
+                            color: $colorSecondary
+            .menu-social
+                li
+                    a
+                        color: $colorPrimary
+                        &:hover
+                            color: $colorSecondary
+        
+        .page
+            .present
                 background: $colorDark
                 color: #fff
 
@@ -288,8 +318,9 @@ body
                     display: block
                 .globe
                     display: none
-        .works
-            background: purple
+            
+            .about
+                background: $colorSecondary
 
 @-webkit-keyframes pulsate
     0%
@@ -315,9 +346,17 @@ body
             width: 100%
 
 @media only screen and (max-width: 992px)
+    body,
+    html
+        height: auto
     body
         margin-left: 0
         margin-top: 59px
+
+        .col-5,
+        .col-6,
+        .col-7
+            width: 100%
 
         nav
             width: 100%
@@ -350,14 +389,10 @@ body
             display: block
 
         .page
+            
             .present
                 display: inline-block
                 min-height: auto
-
-                .col-5,
-                .col-6,
-                .col-7
-                    width: 100%
                 
                 .text-present
                     text-align: center
@@ -382,6 +417,8 @@ body
                 .globe, 
                 .terminal
                     display: none
+            .about
+                display: inline-block
 
 @media only screen and (max-width: 768px)
     body
@@ -405,7 +442,7 @@ body
                 position: relative
                 left: 100%
                 width: 100%
-                background: #222
+                background: $colorDarkVersion
 
                 li
                     margin: 0
