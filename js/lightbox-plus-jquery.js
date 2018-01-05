@@ -10339,7 +10339,7 @@ return jQuery;
   // that contain 'lightbox'. When these are clicked, start lightbox.
   Lightbox.prototype.enable = function() {
     var self = this;
-    $('body').on('click', 'button', function(event) {
+    $('body').on('click', '.open', function(event) {
 	  console.log($(event.currentTarget).parent().parent().parent());
       self.start($(event.currentTarget).parent().parent().parent());
       return false;
