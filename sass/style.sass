@@ -6,6 +6,7 @@ $colorDarkVersion: #222
 $colorLightVersion: #EAEAEA
 
 $widthMenu: 65px
+$heightMap: 400px
 
 @import url('https://fonts.googleapis.com/css?family=Arvo')
 
@@ -360,6 +361,61 @@ body
                             filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.1, M12=0, M21=0, M22=1.1, SizingMethod='auto expand')
                             /* IE6 and 7 */
 
+        .contact
+            position: relative
+            width: 100%
+            height: $heightMap
+
+            .content-map
+                background: rgba(0, 0, 0, .5)
+                height: 100%
+                width: 45%
+                position: absolute
+                padding: 10px
+
+                .form
+                    display: block
+                    width: 100%
+                    max-width: 450px
+                    margin: 0 auto
+                    h1
+                        margin: 20px 0
+
+                    input,
+                    textarea
+                        background: rgba(255, 255, 255, .5)
+                        border: none
+                        width: 400px
+                        padding: 10px
+                        margin: 3px
+                        font-size: 18px
+                        outline: none
+                        color: $colorLightVersion
+                        font-family: sans-serif
+
+                        &::placeholder
+                            color: #eee
+                    
+                    textarea
+                        resize: none
+                        height: 130px
+                    
+                    button
+                        background: $colorPrimary
+                        color: $colorLightVersion
+                        border: none
+                        width: 400px
+                        padding: 10px
+                        margin: 3px
+                        font-size: 18px
+                        outline: none
+                        cursor: pointer
+
+            #map
+                height: 100%
+                width: 100%
+                position: absolute
+
     
     &.dark
         .title
@@ -534,6 +590,18 @@ body
                     display: none
             .about
                 display: inline-block
+
+            .contact
+                height: 550px
+                .content-map
+                    width: 100%
+                    height: auto
+
+                    .form
+                        input,
+                        textarea,
+                        button
+                            width: 95%
 
 @media only screen and (max-width: 768px)
     body
