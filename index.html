@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="dist/css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/lightbox.min.css">
     <link rel="stylesheet" href="dist/css/themify-icons.css">
 </head>
 
@@ -118,12 +119,59 @@
                 </div>
             </div>
         </div>
+
+        <div class="projects">
+            <div class="container">
+                <div class="col-3">
+                    <a href="http://lokeshdhakar.com/projects/lightbox2/images/image-3.jpg" data-lightbox="example-set" class="project" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-3.jpg" alt="" />
+                        <div class="details">
+                            <span class="title">Lorem Ipsum Dolor</span>
+                            <span class="info">
+                                <button>Ver</button> vel felis lectus donec vitae dapibus magna</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="http://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg" data-lightbox="example-set" class="project" data-title="Or press the right arrow on your keyboard.">
+                        <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" alt="" />
+                        <div class="details">
+                            <span class="title">Lorem Ipsum Dolor</span>
+                            <span class="info">
+                                <button>Ver</button> vel felis lectus donec vitae dapibus magna</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="http://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg" data-lightbox="example-set" class="project" data-title="The next image in the set is preloaded as you're viewing.">
+                        <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-5.jpg" alt="" />
+                        <div class="details">
+                            <span class="title">Lorem Ipsum Dolor</span>
+                            <span class="info">
+                                <button>Ver</button> vel felis lectus donec vitae dapibus magna</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" class="project" data-title="Click anywhere outside the image or the X to the right to close.">
+                        <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" />
+                        <div class="details">
+                            <span class="title">Lorem Ipsum Dolor</span>
+                            <button>Ver</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
 
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/lightbox-plus-jquery.js"></script>
+    <script src="js/jquery.svg3dtagcloud.js"></script>
+    <script src="js/scripts.js"></script>
     <script>
         $(document).ready(function () {
             $.getJSON("https://jordaomacedo.herokuapp.com/api/skills", function (data) {
@@ -165,10 +213,13 @@
                 //var svg3DTagCloud = new SVG3DTagCloud( document.getElementById( 'holder'  ), settings );
                 $('#holder').svg3DTagCloud(settings);
             });
+
+            $('.project').click(function (e) {
+                e.preventDefault();
+                //do other stuff when a click happens
+            });
         });
     </script>
-    <script src="js/scripts.js"></script>
-    <script src="js/jquery.svg3dtagcloud.js"></script>
 </body>
 
 </html>
