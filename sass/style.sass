@@ -207,6 +207,35 @@ body
                     background-position: 0 18px
                     pointer-events: none
 
+            .loading-skills
+                display: none
+                width: 50px
+                height: 50px
+                border-radius: 50%
+                border: 6px solid $colorPrimary
+                border-right: 6px solid #efefef
+                position: relative
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                animation: loader .7s infinite linear
+
+            .error-loading-skills
+                display: none
+                position: relative
+                top: 50%
+                transform: translateY(-50%)
+                .sad
+                    font-size: 80px
+                    margin: 0
+                    text-align: center
+                    color: $colorSecondary
+                h2
+                    font-size: 20px
+                    font-weight: normal
+                    text-align: center
+                    color: $colorPrimary
+
             .globe
                 position: relative
                 top: 50%
@@ -268,6 +297,18 @@ body
                         background: #c9603f
                     &::-webkit-scrollbar-thumb:window-inactive
                         background: #c9603f
+            #dynamic-content
+                &.loading
+                    .loading-skills
+                        display: block
+                    .terminal,
+                    .globe
+                        display: none
+                &.error
+                    .globe
+                        display: none
+                    .error-loading-skills
+                        display: block
 
         .about
             background: $colorPrimary
@@ -457,6 +498,10 @@ body
                 .my-name
                     color: $colorSecondary
 
+                .loading-skills
+                    border-color: $colorSecondary
+                    border-right-color: #101010
+
                 .back-end-text
                     background: $colorLight
                     color: #000
@@ -473,6 +518,14 @@ body
                     display: block
                 .globe
                     display: none
+
+                #dynamic-content
+                    &.loading
+                        .terminal
+                            display: none
+                    &.error
+                        .error-loading-skills
+                            display: none
             
             .about
                 background: $colorSecondary
@@ -491,6 +544,12 @@ body
                                 &.info
                                     button
                                         color: $colorDarkVersion
+            .contact
+                .content-map
+
+                    .form
+                        button
+                            background: $colorSecondary
             
 @-webkit-keyframes pulsate
     0%
@@ -509,6 +568,12 @@ body
         background: #fff
     100%
         background: #fff
+
+@keyframes loader
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
 
 @media only screen and (max-width: 1200px)
     body

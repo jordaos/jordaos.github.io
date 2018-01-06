@@ -2,6 +2,8 @@ var map;
 var home = { lat: -4.9687496, lng: -39.01601 };
 var center = { lat: -4.9687496, lng: -39.045 };
 var mobileCenter = { lat: -4.9510232, lng: -39.01601 };
+var isLoadingSkills = true;
+var errorLoadingSkills = false;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -31,43 +33,70 @@ $(document).ready(function () {
     var Otimer;
 
     /* LOAD SKILLS */
-    $.getJSON("https://jordaomacedo.herokuapp.com/api/skills", function (data) {
-        entries = data;
+    $.ajax({
+        url: 'https://jordaomacedo.herokuapp.com/api/skills',
+        dataType: 'json',
+        success: function (data) {
+            entries = data;
 
-        var settings = {
-            entries: entries,
-            width: '600',
-            height: '600',
-            radius: '65%',
-            radiusMin: 75,
-            bgDraw: true,
-            bgColor: 'transparent',
-            opacityOver: 1.00,
-            opacityOut: 0.05,
-            opacitySpeed: 6,
-            fov: 800,
-            speed: 0.6,
-            fontFamily: 'Uni Sans, Arvo, Oswald, Arial, sans-serif',
-            fontSize: '18',
-            fontColor: '#fff',
-            fontWeight: 'bold',//bold
-            fontStyle: 'normal',//italic 
-            fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
-            fontToUpperCase: true,
-            tooltipFontFamily: 'Oswald, Arial, sans-serif',
-            tooltipFontSize: '11',
-            tooltipFontColor: '#fff',
-            tooltipFontWeight: 'bold',//bold
-            tooltipFontStyle: 'normal',//italic 
-            tooltipFontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
-            tooltipFontToUpperCase: false,
-            tooltipTextAnchor: 'left',
-            tooltipDiffX: 0,
-            tooltipDiffY: 10
+            var settings = {
+                entries: entries,
+                width: '600',
+                height: '600',
+                radius: '65%',
+                radiusMin: 75,
+                bgDraw: true,
+                bgColor: 'transparent',
+                opacityOver: 1.00,
+                opacityOut: 0.05,
+                opacitySpeed: 6,
+                fov: 800,
+                speed: 0.6,
+                fontFamily: 'Uni Sans, Arvo, Oswald, Arial, sans-serif',
+                fontSize: '18',
+                fontColor: '#fff',
+                fontWeight: 'bold',//bold
+                fontStyle: 'normal',//italic 
+                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                fontToUpperCase: true,
+                tooltipFontFamily: 'Oswald, Arial, sans-serif',
+                tooltipFontSize: '11',
+                tooltipFontColor: '#fff',
+                tooltipFontWeight: 'bold',//bold
+                tooltipFontStyle: 'normal',//italic 
+                tooltipFontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                tooltipFontToUpperCase: false,
+                tooltipTextAnchor: 'left',
+                tooltipDiffX: 0,
+                tooltipDiffY: 10
 
-        };
-        $('#holder').svg3DTagCloud(settings);
+            };
+            $('#holder').svg3DTagCloud(settings);
+
+            isLoadingSkills = false;
+            changeDynamicContent();
+        },
+        error: function (data) {
+            isLoadingSkills = false;
+            errorLoadingSkills = true;
+            changeDynamicContent();
+        }
     });
+
+    function changeDynamicContent() {
+        var dynamicContent = $("#dynamic-content");
+        if( isLoadingSkills ) {
+            dynamicContent.addClass("loading");
+        } else {
+            dynamicContent.removeClass("loading");
+        }
+
+        if( errorLoadingSkills ) {
+            dynamicContent.addClass("error");
+        } else {
+            dynamicContent.removeClass("error");
+        }
+    }
 
     $('.project').click(function (e) {
         e.preventDefault();
@@ -106,12 +135,19 @@ $(document).ready(function () {
                 clearInterval(Otimer);
                 content.append("<br>");
                 setTimeout(function () {
-                    var pre = $("<pre></pre>");
-                    pre.append(JSON.stringify(entries, null, 2));
-                    content.append(pre);
-                    content.append($(".linux-command").clone());
-                    var terminalBody = $(".terminal .body");
-                    terminalBody.scrollTop(terminalBody.prop("scrollHeight"));
+                    if(!errorLoadingSkills){
+                        var pre = $("<pre></pre>");
+                        pre.append(JSON.stringify(entries, null, 2));
+                        content.append(pre);
+                        content.append($(".linux-command").clone());
+                        var terminalBody = $(".terminal .body");
+                        terminalBody.scrollTop(terminalBody.prop("scrollHeight"));
+                    } else {
+                        content.append("curl: (6) Could not resolve host: jordaomacedo.herokuapp.com <br>");
+                        content.append($(".linux-command").clone());
+                        var terminalBody = $(".terminal .body");
+                        terminalBody.scrollTop(terminalBody.prop("scrollHeight"));
+                    }
                 }, 2000);
             }
         };
