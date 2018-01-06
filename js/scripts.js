@@ -85,13 +85,13 @@ $(document).ready(function () {
 
     function changeDynamicContent() {
         var dynamicContent = $("#dynamic-content");
-        if( isLoadingSkills ) {
+        if (isLoadingSkills) {
             dynamicContent.addClass("loading");
         } else {
             dynamicContent.removeClass("loading");
         }
 
-        if( errorLoadingSkills ) {
+        if (errorLoadingSkills) {
             dynamicContent.addClass("error");
         } else {
             dynamicContent.removeClass("error");
@@ -102,6 +102,36 @@ $(document).ready(function () {
         e.preventDefault();
     });
     /* END LOAD SKILLS */
+
+    /* MENU */
+    $('.menu-items a').click(function (e) {
+        e.preventDefault();
+        var href = $(this).attr("href");
+        
+        switch (href) {
+            case "#":
+                $('html, body').animate({
+                    scrollTop: $("html").offset().top
+                }, 1000);
+                break;
+            case "#about":
+                $('html, body').animate({
+                    scrollTop: $("#about").offset().top
+                }, 1000);
+                break;
+            case "#works":
+                $('html, body').animate({
+                    scrollTop: $("#works").offset().top
+                }, 1000);
+                break;
+            case "#contact":
+                $('html, body').animate({
+                    scrollTop: $("#contact").offset().top
+                }, 1000);
+                break;
+        }
+    });
+    /* END MENU */
 
     $("#back-end-text").mouseenter(function () {
         $("body").addClass("dark");
@@ -135,7 +165,7 @@ $(document).ready(function () {
                 clearInterval(Otimer);
                 content.append("<br>");
                 setTimeout(function () {
-                    if(!errorLoadingSkills){
+                    if (!errorLoadingSkills) {
                         var pre = $("<pre></pre>");
                         pre.append(JSON.stringify(entries, null, 2));
                         content.append(pre);
