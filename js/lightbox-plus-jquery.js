@@ -10468,7 +10468,7 @@ return jQuery;
     function addToAlbum($link) {
       self.album.push({
         alt: $link.attr('data-alt'),
-        link: $link.attr('href'),
+        link: $link.attr('data-src'),
         title: $link.attr('data-title') || $link.attr('title')
       });
     }

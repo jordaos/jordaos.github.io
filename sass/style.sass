@@ -349,7 +349,14 @@ body
                         -ms-transition: all .6s ease
                         -webkit-transition: all .6s ease
                         -o-transition: all .6s ease
-                        margin: auto
+                        margin: 0
+
+                        &.center
+                            position: relative
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+
                     .details
                         font-size: 16px
                         padding: 20px
@@ -379,13 +386,16 @@ body
                                 font-size: 12px
                                 float: right
 
-                                button
+                                button,
+                                a
                                     background: none
                                     border: none
                                     cursor: pointer
                                     color: $colorLightVersion
                                     outline: none
                                     font-size: 18px
+                                    display: inline-block
+                                    text-decoration: none
 
                     &:hover
                         .details
@@ -401,6 +411,18 @@ body
                             /* IE8 */
                             filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.1, M12=0, M21=0, M22=1.1, SizingMethod='auto expand')
                             /* IE6 and 7 */
+
+                            &.center
+                                transform: translate(-50%, -50%) scale(1.1)
+                                -moz-transform: translate(-50%, -50%) scale(1.1)
+                                -webkit-transform: translate(-50%, -50%) scale(1.1)
+                                -o-transform: translate(-50%, -50%) scale(1.1)
+                                -ms-transform: translate(-50%, -50%) scale(1.1)
+                                /* IE 9 */
+                                -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.1, M12=0, M21=0, M22=1.1, SizingMethod='auto expand')"
+                                /* IE8 */
+                                filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.1, M12=0, M21=0, M22=1.1, SizingMethod='auto expand')
+                                /* IE6 and 7 */
 
         .contact
             position: relative

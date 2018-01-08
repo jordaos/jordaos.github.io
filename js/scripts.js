@@ -98,9 +98,6 @@ $(document).ready(function () {
         }
     }
 
-    $('.project').click(function (e) {
-        e.preventDefault();
-    });
     /* END LOAD SKILLS */
 
     /* MENU */
@@ -190,8 +187,6 @@ $(document).ready(function () {
         }
         initializedTerminal = true;
     }
-
-
 
     $(window).resize(function () {
         var screenWidth = $(document).width() + 15;
