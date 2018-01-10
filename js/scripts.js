@@ -104,7 +104,7 @@ $(document).ready(function () {
     $('.menu-items a').click(function (e) {
         e.preventDefault();
         var href = $(this).attr("href");
-        
+
         switch (href) {
             case "#":
                 $('html, body').animate({
@@ -202,5 +202,69 @@ $(document).ready(function () {
 
     $("#open-menu").click(function () {
         $("nav").toggleClass("show-menu");
+    });
+
+    $("#contactForm").submit(function (ev) {
+        ev.preventDefault();
+        var haveError = false;
+        var subject = $(this).find("input[name=subject]");
+        var email = $(this).find("input[name=email]");
+        var message = $(this).find("textarea[name=message]");
+        var submit = $(this).find("input[type=submit]");
+        subject.removeClass("error");
+        email.removeClass("error");
+        message.removeClass("error");
+
+        if (subject.val() == "" || subject == undefined) {
+            subject.addClass("error");
+            haveError = true;
+        }
+        if (email.val() == "" || email == undefined) {
+            email.addClass("error");
+            haveError = true;
+        }
+        if (message.val() == "" || message == undefined) {
+            message.addClass("error");
+            haveError = true;
+        }
+
+        if (!haveError) {
+            var data = {
+                email: email.val(),
+                subject: subject.val(),
+                message: message.val()
+            }
+            submit.val("Sending!");
+            submit.prop("disabled", true);
+            $.ajax({
+                type: "POST",
+                url: "http://jordaomacedo.herokuapp.com/api/contacts",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    submit.val("Success!");
+                    submit.prop("disabled", true);
+                    submit.addClass("success");
+                    setTimeout(function() {
+                        submit.val("Send");
+                        submit.prop("disabled", false);
+                        submit.removeClass("success");
+                        email.val("");
+                        subject.val("");
+                        message.val("");
+                    }, 3000);
+                },
+                error: function (error) {
+                    submit.val("Error");
+                    submit.prop("disabled", true);
+                    submit.addClass("error");
+                    setTimeout(function() {
+                        submit.val("Send");
+                        submit.prop("disabled", false);
+                        submit.removeClass("error");
+                    }, 3000);
+                }
+            });
+        }
     });
 });

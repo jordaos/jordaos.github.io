@@ -4,6 +4,8 @@ $colorPrimary: #22A7F0
 $colorSecondary: #F62459
 $colorDarkVersion: #222
 $colorLightVersion: #EAEAEA
+$colorSuccess: #2ECC71
+$colorError: #EC644B
 
 $widthMenu: 65px
 $heightMap: 400px
@@ -444,10 +446,11 @@ body
                     h1
                         margin: 20px 0
 
-                    input,
+                    input[type="text"],
+                    input[type="email"],
                     textarea
+                        border: 1px solid transparent
                         background: rgba(255, 255, 255, .5)
-                        border: none
                         width: 400px
                         padding: 10px
                         margin: 3px
@@ -455,15 +458,24 @@ body
                         outline: none
                         color: $colorLightVersion
                         font-family: sans-serif
+                        box-sizing: border-box
 
                         &::placeholder
-                            color: #eee
+                            color: #777
+
+                        &.error
+                            border: 1px solid $colorError
+                            color: $colorError
+                            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both
+                            transform: translate3d(0, 0, 0)
+                            backface-visibility: hidden
+                            perspective: 1000px
                     
                     textarea
                         resize: none
                         height: 130px
                     
-                    button
+                    input[type="submit"]
                         background: $colorPrimary
                         color: $colorLightVersion
                         border: none
@@ -471,8 +483,14 @@ body
                         padding: 10px
                         margin: 3px
                         font-size: 18px
+                        font-weight: bold
                         outline: none
                         cursor: pointer
+
+                        &.success
+                            background: $colorSuccess
+                        &.error
+                            background: $colorError
 
             #map
                 height: 100%
@@ -571,7 +589,7 @@ body
                 .content-map
 
                     .form
-                        button
+                        input[type="submit"]
                             background: $colorSecondary
             
 @-webkit-keyframes pulsate
@@ -597,6 +615,19 @@ body
         transform: rotate(0deg)
     100%
         transform: rotate(360deg)
+
+@keyframes shake
+    10%, 90%
+        transform: translate3d(-1px, 0, 0)
+
+    20%, 80%
+        transform: translate3d(2px, 0, 0)
+
+    30%, 50%, 70%
+        transform: translate3d(-4px, 0, 0)
+
+    40%, 60%
+        transform: translate3d(4px, 0, 0)
 
 @media only screen and (max-width: 1200px)
     body
@@ -676,7 +707,7 @@ body
                 .globe, 
                 .terminal
                     display: none
-            .about
+            .aboutemail
                 display: inline-block
 
             .contact
@@ -686,9 +717,10 @@ body
                     height: auto
 
                     .form
-                        input,
+                        input[type="text"],
+                        input[type="email"],
                         textarea,
-                        button
+                        input[type="submit"]
                             width: 95%
 
 @media only screen and (max-width: 768px)
