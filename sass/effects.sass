@@ -1,0 +1,92 @@
+$montainColorBottom: #049372
+$bgColor: linear-gradient(#232055, #181743)
+
+.effects 
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: flex-end
+  position: absolute
+  bottom: 0
+  left: 0
+
+
+.cloud 
+  width: 100px
+  height: 20px
+  border-radius: 30px 30px 0 0 
+  background: #fff
+  position: absolute
+  box-shadow: -8px 6px 0px 0px rgba(0, 0, 0, 0.05)
+  
+  &:before 
+    top: -15px
+    left: 50%
+    margin-left: -25px
+    width: 50px
+    height: 32px
+    border-radius: 50px 50px 0 0
+    position: absolute
+    background: #fff
+    content: ''
+
+.cloud-1 
+  bottom: 80%
+  left: 80%
+
+.cloud-2 
+  bottom: 65%
+  left: 79%
+  transform: scale(.5)
+
+.cloud-3 
+  bottom: 55%
+  left: 60%
+  transform: scale(1.2)
+  z-index: 0
+
+.montain 
+  box-shadow: 0 0 0 5px rgba(#000, .1)
+  width: 75px
+  border-radius: 60px 60px 0 0
+  position: relative
+  
+  &:after 
+    content: ""
+    width: 13px
+    height: 13px
+    background: #fff
+    top: 20px
+    left: 15px
+    border-radius: 50%
+    opacity: .2
+    position: absolute
+
+.montain-1 
+  background: linear-gradient(darken(#00ff89, 1), darken($montainColorBottom, 10))
+  height: 100px
+
+.montain-2 
+  background: linear-gradient(#7451ff, $montainColorBottom)
+  height: 70px
+  margin-left: -20px
+  z-index: 1
+
+.montain-3 
+  background: linear-gradient(#ffc151, darken($montainColorBottom, 10))
+  height: 140px
+  margin-left: -60px
+  z-index: 0
+
+.montain-4
+  background: linear-gradient(#aaa79a, darken($montainColorBottom, 10))
+  height: 80px
+  margin-left: -5px
+  z-index: 0
+
+.montain-5
+  background: linear-gradient(#00c151, darken($montainColorBottom, 10))
+  height: 50px
+  margin-left: -5px
+  z-index: 0
